@@ -8,7 +8,7 @@ spec:
     matchLabels:
       app: mysql
   strategy:    # Creating the Pods in Recreate manner
-    name: Recreate
+    type: Recreate
   template:
     metadata:
       labels:
