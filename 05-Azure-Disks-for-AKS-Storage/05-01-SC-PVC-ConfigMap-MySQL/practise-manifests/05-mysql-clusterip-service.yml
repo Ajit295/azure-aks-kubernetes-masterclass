@@ -7,5 +7,4 @@ spec:
    app: mysql
   ports:
     - port: 3306
-  # ClusterIP set to None so it will take mysql pod IP as ClusterIP
-  clusterIP: None
+      clusterIP: None
