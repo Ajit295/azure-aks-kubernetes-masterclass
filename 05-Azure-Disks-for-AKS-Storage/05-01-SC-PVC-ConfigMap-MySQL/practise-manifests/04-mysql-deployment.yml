@@ -8,7 +8,7 @@ spec:
     matchLabels:
       app: mysql
   # Stratergy should be Recreate and pods will be recreate during deployment.
-  # There are another strategy called Rolling which is by default
+  # By default it will be Rolling updates.
   strategy:
     type: Recreate
   template:
