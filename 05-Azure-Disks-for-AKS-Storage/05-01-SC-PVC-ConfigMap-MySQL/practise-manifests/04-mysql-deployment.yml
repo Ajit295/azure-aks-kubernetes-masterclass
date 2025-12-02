@@ -3,44 +3,44 @@ kind: Deployment
 metadata:
   name: mysql
 spec:
-replicas: 1
-selector:
-  matchLabels:
-    app: mysql
-strategy:
-  type: Recreate
-template:
-  metadata:
-    labels:
+  replicas: 1
+  selector:
+    matchLabels:
       app: mysql
-  spec:
-    containers:
-    - name: mysql
-      image: mysql:5.6
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - name: mysql
+        image: mysql:5.6
 
-      # username and password as Environment variable to mysql container
-      env:
-      - name: MYSQL_ROOT_PASSWORD
-        value: dbpassword11
-    
-      # Define port for container
-      ports:
-      - containerPort: 3306
-        name: mysql
-
-      # Define Volumen mounts both, (Persistant Volume and config map)
-      volumeMounts:
-      - name: mysql-persistent-storage
-        mountPath: /var/lib/mysql
-      - name: usermanagement-dbcreation-script
-        mountPath: /docker-entrypoint-initdb.d
+        # username and password as Environment variable to mysql container
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: dbpassword11
       
-    # Define Volumes (Persistant volume claim and config map)
-    volumes:
-    - name: mysql-persistent-storage
-      persistentVolumeClaim:
-        claimName: azure-managed-disk-pvc
-    - name: usermanagement-dbcreation-script
-      configMap:
-        name: usermanagement-dbcreation-script
+        # Define port for container
+        ports:
+        - containerPort: 3306
+          name: mysql
+
+        # Define Volumen mounts both, (Persistant Volume and config map)
+        volumeMounts:
+        - name: mysql-persistent-storage
+          mountPath: /var/lib/mysql
+        - name: usermanagement-dbcreation-script
+          mountPath: /docker-entrypoint-initdb.d
+        
+      # Define Volumes (Persistant volume claim and config map)
+      volumes:
+      - name: mysql-persistent-storage
+        persistentVolumeClaim:
+          claimName: azure-managed-disk-pvc
+      - name: usermanagement-dbcreation-script
+        configMap:
+          name: usermanagement-dbcreation-script
     
