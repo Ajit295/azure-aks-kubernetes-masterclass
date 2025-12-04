@@ -1,7 +1,9 @@
+# Creating service called External name which will connect to Azure MySQL database using it's hotname
+
 apiVersion: v1
 kind: Service
 metadata:
   name: mysql
 spec:
   type: ExternalName
-  externalName: webappdb12345.mysql.database.azure.com
+  externalName: webappdb12345.mysql.database.azure.com   # Azure MySQL datbase name
