@@ -37,7 +37,7 @@ az network public-ip create --resource-group MC_aks-rg1_aksdemo1_centralus --nam
 brew install helm
 
 # Create a namespace for your ingress resources
-kubectl create namespace ingress-basic
+kubectl create namespace ingress-basic**
 
 # Add the official stable repository
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
