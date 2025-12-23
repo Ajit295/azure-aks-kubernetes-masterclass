@@ -3,7 +3,6 @@ kind: Ingress
 metadata:
   name: ingress-ssl
   annotations:
-    #kubernetes.io/ingress.class: "nginx"
     cert-manager.io/cluster-issuer: letsencrypt    
 spec:
   ingressClassName: nginx
