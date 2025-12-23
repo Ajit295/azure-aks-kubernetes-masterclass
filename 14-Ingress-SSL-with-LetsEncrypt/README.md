@@ -17,11 +17,7 @@ helm repo add jetstack https://charts.jetstack.io
 helm repo update
 
 # Install the cert-manager Helm chart
-helm install \
-  cert-manager jetstack/cert-manager \
-  --namespace ingress-basic \
-  --version v1.13.3 \
-  --set installCRDs=true
+helm install cert-manager jetstack/cert-manager --namespace ingress-basic --version v1.13.3 --set installCRDs=true
 
 ## SAMPLE OUTPUT
 Kalyans-Mac-mini:azure-aks-kubernetes-masterclass-internal24 kalyanreddy$ helm install \
