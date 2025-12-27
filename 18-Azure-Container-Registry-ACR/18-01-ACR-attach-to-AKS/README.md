@@ -56,6 +56,16 @@ cd docker-manifests
 # Docker Build
 docker build -t kube-nginx-acr:v1 .
 
+# If you are using Mac to build the images, then use below command to build images.
+# It uses buildx which is advanced docker image builder feature.
+# it ensures the images builded is compatible with all types of platforms like linux/arm64
+# or linux/amd64.
+
+docker buildx build \
+  --platform linux/amd64 \
+  -t demoacr0123.azurecr.io/app1/kube-nginx-acr:v1 \
+  --push .
+
 # List Docker Images
 docker images
 docker images kube-nginx-acr:v1
@@ -120,7 +130,7 @@ echo $ACR_NAME
 az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acr-name>
 
 # Replace Cluster, Resource Group and ACR Repo Name
-az aks update -n aksdemo2 -g aks-rg2 --attach-acr $ACR_NAME
+az aks update -n aksdemo1 -g AKS-RG --attach-acr $ACR_NAME
 ```
 
 
